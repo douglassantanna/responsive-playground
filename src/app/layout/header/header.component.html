@@ -1,0 +1,43 @@
+<header>
+  <button class="toggle-btn" (click)="toggleSidenavEvent.emit()">☰</button>
+  <div class="welcome-message">Welcome, {{ userName }}</div>
+</header>
+
+<style>
+  header {
+    background-color: #333;
+    color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    height: 8vh;
+  }
+
+  .toggle-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+
+  .welcome-message {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .welcome-message {
+      font-size: 14px;
+      margin-left: 20px;
+    }
+
+    .toggle-btn {
+      display: none;
+    }
+  }
+</style>
