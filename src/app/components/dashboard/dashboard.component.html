@@ -2,49 +2,51 @@
   <h2>Dashboard</h2>
   <div class="cards">
     <div class="card">
-      <h3>Total Transactions</h3>
-      <p>{{ totalTransactions }}</p>
+      <span class="card-title">Total Transactions</span>
+      <span class="card-desc">{{ totalTransactions }}</span>
     </div>
     <div class="card">
-      <h3>Total Earned</h3>
-      <p>${{ totalEarned }}</p>
+      <span class="card-title">Total Earned</span>
+      <span class="card-desc">${{ totalEarned }}</span>
     </div>
     <div class="card">
-      <h3>Total Refunded</h3>
-      <p>${{ totalRefunded }}</p>
+      <span class="card-title">Total Refunded</span>
+      <span class="card-desc">${{ totalRefunded }}</span>
     </div>
     <div class="card">
-      <h3>Total Pending Transactions</h3>
-      <p>{{ totalPending }}</p>
+      <span class="card-title">Total Pending Transactions</span>
+      <span class="card-desc">{{ totalPending }}</span>
     </div>
     <div class="card">
-      <h3>Average Transaction Value</h3>
-      <p>${{ averageTransactionValue }}</p>
+      <span class="card-title">Average Transaction Value</span>
+      <span class="card-desc">${{ averageTransactionValue }}</span>
     </div>
   </div>
 
   <h2>Recent Transactions</h2>
-  <table class="transactions-table">
-    <thead>
-      <tr>
-        <th>Card Holder</th>
-        <th>Card Number</th>
-        <th>Amount</th>
-        <th>Date</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (transaction of transactions; track $index) {
-      <tr>
-        <td>{{ transaction.cardHolder }}</td>
-        <td>{{ transaction.cardNumber }}</td>
-        <td>${{ transaction.amount }}</td>
-        <td>{{ transaction.date }}</td>
-        <td>{{ transaction.status }}</td>
-        }
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table class="transactions-table">
+      <thead>
+        <tr>
+          <th>Card Holder</th>
+          <th>Card Number</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (transaction of transactions; track $index) {
+        <tr>
+          <td>{{ transaction.cardHolder }}</td>
+          <td>{{ transaction.cardNumber }}</td>
+          <td>${{ transaction.amount }}</td>
+          <td>{{ transaction.date }}</td>
+          <td>{{ transaction.status }}</td>
+          }
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <style>
@@ -54,7 +56,7 @@
 
   .cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
 
@@ -64,13 +66,22 @@
     border-radius: 8px;
     padding: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
   }
 
-  .card h3 {
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .card-title {
     margin-top: 0;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
   }
 
-  .card p {
+  .card-desc {
     margin: 8px 0;
     font-size: 24px;
     font-weight: bold;
@@ -91,5 +102,33 @@
 
   .transactions-table th {
     background-color: #f2f2f2;
+  }
+
+  @media (max-width: 600px) {
+    .cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      padding: 12px;
+    }
+
+    .card-title {
+      margin-top: 0;
+      font-size: 16px;
+      color: #333;
+      font-weight: semi-bold;
+    }
+
+    .card-desc {
+      margin: 8px 0;
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    .transactions-table th,
+    .transactions-table td {
+      padding: 4px;
+    }
   }
 </style>
