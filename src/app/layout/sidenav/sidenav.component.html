@@ -1,11 +1,9 @@
-<div class="sidenav" [class.collapsed]="isCollapsed()">
+<div class="sidenav" [class.collapsed]="isCollapsed()" [class.mobile]="isMobile()">
   <a routerLink="/dashboard"><i class="material-icons">dashboard</i> <span class="label">Dashboard</span></a>
   <a routerLink="/users"><i class="material-icons">group</i> <span class="label">Users</span></a>
-  <!-- <div class="logout-container"> -->
   <a class="logout-btn" (click)="logout()">
     <i class="material-icons">logout</i> <span class="label">Logout</span>
   </a>
-  <!-- </div> -->
 </div>
 
 <div class="main">
@@ -13,6 +11,30 @@
 </div>
 
 <style>
+  .sidenav.mobile {
+    height: 60px;
+    width: 100%;
+    bottom: 0;
+    top: auto;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  .sidenav.mobile a {
+    flex-direction: column;
+    padding: 8px;
+    font-size: 18px;
+  }
+
+  .sidenav.mobile .logout-container {
+    padding: 0;
+  }
+
+  .sidenav.mobile .logout-btn {
+    justify-content: center;
+  }
+
   /* The sidenav */
   .sidenav {
     height: 100%;
@@ -81,6 +103,8 @@
   @media (max-width: 600px) {
     .sidenav {
       width: 50px;
+      justify-content: space-around;
+      align-items: center;
     }
 
     .sidenav a {
@@ -89,7 +113,7 @@
     }
 
     .main {
-      margin-left: 50px;
+      margin-left: 0px;
     }
 
     .sidenav .label {

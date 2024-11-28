@@ -1,4 +1,4 @@
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, HostListener, input, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -10,6 +10,16 @@ import { RouterModule } from '@angular/router';
 })
 export class SidenavComponent {
   isCollapsed = input.required<boolean>();
+  isMobileView = false;
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.isMobileView = window.innerWidth <= 600;
+  }
+
+  ngOnInit() {
+    this.isMobileView = window.innerWidth <= 600;
+  }
 
   toggleSidenav = computed(() => {
     return !this.isCollapsed();
@@ -17,5 +27,9 @@ export class SidenavComponent {
 
   logout() {
     console.log('User logged out');
+  }
+
+  isMobile() {
+    return this.isMobileView;
   }
 }
