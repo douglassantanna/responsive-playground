@@ -13,5 +13,9 @@ export class SidenavComponent {
 
   toggleSidenav = computed(() => {
     return !this.isCollapsed();
-  })
+  });
+
+  logout() {
+    console.log('User logged out');
+  }
 }

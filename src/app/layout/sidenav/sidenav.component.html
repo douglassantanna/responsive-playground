@@ -1,6 +1,11 @@
 <div class="sidenav" [class.collapsed]="isCollapsed()">
-  <a routerLink="/dashboard"><i class="fas fa-tachometer-alt"></i> <span class="label">Dashboard</span></a>
-  <a routerLink="/users"><i class="fas fa-users"></i> <span class="label">Users</span></a>
+  <a routerLink="/dashboard"><i class="material-icons">dashboard</i> <span class="label">Dashboard</span></a>
+  <a routerLink="/users"><i class="material-icons">group</i> <span class="label">Users</span></a>
+  <!-- <div class="logout-container"> -->
+  <a class="logout-btn" (click)="logout()">
+    <i class="material-icons">logout</i> <span class="label">Logout</span>
+  </a>
+  <!-- </div> -->
 </div>
 
 <div class="main">
@@ -11,39 +16,40 @@
   /* The sidenav */
   .sidenav {
     height: 100%;
-    width: 250px;
+    width: 200px;
     position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
     background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
     transition: width 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
   }
 
   .sidenav.collapsed {
-    width: 60px;
+    width: 50px;
   }
 
   /* Sidenav links */
   .sidenav a {
-    padding: 8px 8px 8px 16px;
+    padding: 8px 8px 8px 13px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     color: #818181;
     display: flex;
     align-items: center;
-    transition: padding 0.3s;
+    transition: padding 0.3s, font-size 0.3s;
   }
 
   .sidenav.collapsed a {
-    padding: 8px 8px 8px 8px;
-    font-size: 18px;
+    padding: 8px 8px 8px 13px;
+    font-size: 15px;
   }
 
   .sidenav a i {
     margin-right: 10px;
+    transition: margin-right 0.3s;
   }
 
   .sidenav.collapsed a i {
@@ -63,12 +69,12 @@
 
   /* Main content */
   .main {
-    margin-left: 250px;
+    margin-left: 200px;
     transition: margin-left 0.3s;
   }
 
   .sidenav.collapsed~.main {
-    margin-left: 60px;
+    margin-left: 50px;
   }
 
   /* Responsive adjustments */
@@ -78,7 +84,7 @@
     }
 
     .sidenav a {
-      font-size: 18px;
+      font-size: 15px;
       align-items: center;
     }
 
