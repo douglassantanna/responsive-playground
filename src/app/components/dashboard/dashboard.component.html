@@ -1,5 +1,4 @@
 <div class="dashboard">
-  <h2>Dashboard</h2>
   <div class="cards">
     <div class="card">
       <span class="card-title">Total Transactions</span>
@@ -23,29 +22,31 @@
     </div>
   </div>
 
-  <h2>Recent Transactions</h2>
-  <div class="table-container">
-    <table class="transactions-table">
-      <thead>
-        <tr>
-          <th>Card Holder</th>
-          <th>Card Number</th>
-          <th>Amount</th>
-          <th>Date</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (transaction of transactions; track $index) {
-        <tr>
-          <td>{{ transaction.cardHolder }}</td>
-          <td>{{ transaction.cardNumber }}</td>
-          <td>${{ transaction.amount }}</td>
-          <td>{{ transaction.date }}</td>
-          <td>{{ transaction.status }}</td>
-          }
-      </tbody>
-    </table>
+  <div class="card" style="margin-top: 16px;">
+    <h3>Recent Transactions</h3>
+    <div class="table-container">
+      <table class="transactions-table">
+        <thead>
+          <tr>
+            <th>Card Holder</th>
+            <th>Card Number</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (transaction of transactions; track $index) {
+          <tr>
+            <td>{{ transaction.cardHolder }}</td>
+            <td>{{ transaction.cardNumber }}</td>
+            <td>${{ transaction.amount }}</td>
+            <td>{{ transaction.date }}</td>
+            <td>{{ transaction.status }}</td>
+            }
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
