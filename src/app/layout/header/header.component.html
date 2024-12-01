@@ -2,7 +2,7 @@
   <button class="toggle-btn" (click)="toggleSidenavEvent.emit()">
     <span class="material-icons">menu</span>
   </button>
-  <div class="welcome-message">Welcome, {{ userName }}</div>
+  <div class="username-initial-letter">{{ userName | slice: 0:1 }}</div>
 </header>
 
 <style>
@@ -32,10 +32,27 @@
     margin-right: 20px;
   }
 
+  .username-initial-letter {
+    border: white 1px solid;
+    padding: 5px;
+    border-radius: 50px;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+  }
+
   @media (max-width: 600px) {
-    .welcome-message {
+    header {
+      height: 50px;
+    }
+
+    .username-initial-letter {
       font-size: 14px;
-      margin-left: 20px;
+      margin-left: auto;
     }
 
     .toggle-btn {
